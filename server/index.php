@@ -80,6 +80,11 @@ function init()
     } else {
         $name = "xxx"; // TODO handle error
     }
+    if (isset($_GET["d"])) {
+        $display = $_GET["d"];
+    } else {
+        $display = "";
+    }
 
     if (DIRECT_TOKEN === true) {
         echo '<script>opla = { 
@@ -114,6 +119,7 @@ function init()
             host: "'.$parts['host'].'", port: "'.$parts['port'].'",
             anonymous_secret: "'.$policies['anonymous_secret'].'",
             secure: '.$secure.',
+            display: "'.$display.'",
         }};
         (function(o,p,l,a,i){a=p.createElement(l),i=p.getElementsByTagName(l)[0];a.async=1;a.src=o;i.parentNode.insertBefore(a,i)})("/js/app.js",document,"script");
         </script>';

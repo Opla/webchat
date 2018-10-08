@@ -11,12 +11,23 @@ class MessengerContainer {
     this.onSendMessage = onSendMessage;
     this.messengerContent = null;
     this.participants = {};
+    this.display = true;
     
   }
 
   hide() {
     if (this.container) {
       this.container.setAttribute("style", "display: none;");
+      this.display = false;
+    }
+  }
+
+  toggleDisplay() {
+    if (this.display) {
+      this.hide();
+    } else if (this.container) {
+      this.container.removeAttribute("style");
+      this.display = true;
     }
   }
 

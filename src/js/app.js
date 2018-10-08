@@ -157,6 +157,20 @@ const initMessenger = () => {
   appendBeforeScript(container);
 };
 
+
+const displayMessengerButton = () => {
+  const el = document.createElement("div");
+  el.className = "messenger-open_button";
+  const img = document.createElement("img");
+  img.setAttribute("src", baseUrl + "/images/opla-logo.png");
+  el.appendChild(img);
+  el.addEventListener("click", (e) => {
+    e.preventDefault();
+    app.messenger.toggleDisplay();
+  });
+  appendBeforeScript(el);
+}
+
 const initScreen = () => {
   let el = null;
   if (opla.theme && opla.theme.background) {
@@ -174,7 +188,10 @@ const initScreen = () => {
   el.appendChild(img);
   appendBeforeScript(el);
   initMessenger();
+
+  displayMessengerButton();
 };
+
 
 const displayError = (error) => {
   app.messenger.hide();

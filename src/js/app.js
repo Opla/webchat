@@ -5,6 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import Api from "./api"
+import AuthService from "./services/authService";
+import MessengerContainer from "./components/messengerContainer";
+import WebService from "./services/webService";
+import fetch from "./services/fetch";
 
 /**
  * Main application Opla Webchat client
@@ -17,7 +22,7 @@ const localized = {
 
 let baseUrl = "https://bot.opla.ai";
 
-const getLocalizedText = (text) => {
+export const getLocalizedText = (text) => {
   let l = "en";
   if (opla.config.language) {
     l = opla.config.language;
@@ -66,7 +71,10 @@ const initServices = async () => {
   if (!protocol) {
     protocol = opla.config.secure ? "https" : "http";
   }
-  const uri = host + (port ? ":" + port : "");
+
+  var portRegex = /(.*):(\d*)\/?(.*)/;
+  const uri = portRegex.test(host) ? host : `${host}:${port}`;
+
   if (opla.config.token) {
     try {
       const response = await fetch(protocol + "://" + uri + pathname + "/bots/params/" + opla.config.token);

@@ -8,7 +8,7 @@
 /**
  * fetch polyfill
  */
-fetch = (url, data = null, method = null, headers = {}) => {
+export default fetch = (url, data = null, method = null, headers = {}) => {
   let m = null;
   if (data && method === null) {
     m = "POST";

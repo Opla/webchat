@@ -108,6 +108,10 @@
   visibility: hidden;
 } 
 
+.message img {
+  max-width: 240px;
+}
+
 .message .text-wrapper {
   padding: 14px;
   min-height: 48px;

@@ -150,7 +150,8 @@ class MessengerContainer {
 
   createMessage(message) {
     const container = document.createElement("span");
-    if (message.body && message.body.indexOf("<b") >= 0) {
+    const { body } = message;
+    if (body && body.indexOf("<b") >= 0) {
       /* eslint-disable no-restricted-syntax */
       const elements = [];
       let tag = false;
@@ -171,7 +172,7 @@ class MessengerContainer {
             end = false;
             element = {};
           }
-        } else if (ch === "/") {
+        } else if (tag && ch === "/") {
           end = true;
         } else if (end && ch === ">") {
           // <tag /> or </tag>
@@ -235,13 +236,13 @@ class MessengerContainer {
           }
         } else {
           element = document.createElement("span");
-          element.innerHTML = el.value;
+          element.innerHTML = this.htmlLink(el.value);
         }
         container.appendChild(element);
       });
       /* eslint-enable no-restricted-syntax */
     } else {
-      container.innerHTML = this.htmlLink(message.body);
+      container.innerHTML = this.htmlLink(body);
     }
     return container;
   }

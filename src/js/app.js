@@ -165,6 +165,12 @@ const initMessenger = () => {
   appendBeforeScript(container);
 };
 
+const displayWebsiteSrc = (url) => {
+  const el = document.createElement("iframe");
+  el.setAttribute("src", url);
+  el.className = "website-src";
+  appendBeforeScript(el);
+}
 
 const displayMessengerButton = () => {
   const el = document.createElement("div");
@@ -180,6 +186,9 @@ const displayMessengerButton = () => {
 }
 
 const initScreen = () => {
+  
+  // displayWebsiteSrc("http://opla.ai/");
+
   let el = null;
   if (opla.theme && opla.theme.background) {
     el = document.createElement("div");

@@ -21,7 +21,7 @@ available at: `127.0.0.1:8081`.
     $ yarn install
     ```
 
-2. Create an an application in the backend to get client_id / client_secret:
+2. Create an application in the backend to get client_id / client_secret:
 
    ```
    $ curl -X POST \

@@ -289,7 +289,7 @@ body {
 .message-button {
   background-color: #6200ee;
   color: white;
-  margin: 0px 8px;
+  margin: 5px 8px;
 }
 
 .mdx-button:focus, .mdx-button:hover {

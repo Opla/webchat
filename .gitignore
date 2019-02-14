@@ -5,5 +5,4 @@ lib
 config
 config.js
 server/config.php
-yarn.lock
 .yarnclean

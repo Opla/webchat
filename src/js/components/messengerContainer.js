@@ -7,13 +7,11 @@
 import { getLocalizedText } from "../app";
 
 class MessengerContainer {
-
   constructor(onSendMessage) {
     this.onSendMessage = onSendMessage;
     this.messengerContent = null;
     this.participants = {};
     this.display = true;
-    
   }
 
   hide() {
@@ -46,21 +44,25 @@ class MessengerContainer {
 
   setStyle(el, name, defaultStyle = null) {
     const style = this.getStyle(name, defaultStyle);
-    this.setSubStyle(el, style);
+    MessengerContainer.setSubStyle(el, style);
     if (style) {
-      el.setAttribute("style", style);    
+      el.setAttribute("style", style);
     }
   }
 
-  setSubStyle(el, t) {
+  static setSubStyle(el, t) {
     if (t && t.style) {
-        el.setAttribute("style", t.style);    
+      el.setAttribute("style", t.style);
     }
   }
 
-    // MaterialDesign Input
+  // MaterialDesign Input
   // Inspiration : https://codepen.io/sevilayha/pen/IdGKH
-  renderTextField({ label = null, floatingLabel = false, onEnter = null }) {
+  static renderTextField({
+    label = null,
+    floatingLabel = false,
+    onEnter = null,
+  }) {
     const container = document.createElement("div");
     container.className = "mdx-textfield";
     const input = document.createElement("input");
@@ -79,7 +81,7 @@ class MessengerContainer {
       l = document.createElement("label");
       l.setAttribute("for", "chat-input-field");
       l.className = "mdx-textfield__label";
-      l.innerText= label;
+      l.innerText = label;
       container.appendChild(l);
     }
     input.addEventListener("keyup", (e) => {
@@ -90,15 +92,15 @@ class MessengerContainer {
           result = onEnter(value);
         }
         if (result) {
-          e.target.value = "";        
+          e.target.value = "";
         }
         return;
       }
-      if ((!floatingLabel) && l) {
+      if (!floatingLabel && l) {
         if (value.length > 0) {
           l.setAttribute("style", "display: none;");
         } else {
-          l.setAttribute("style", "display: block;");        
+          l.setAttribute("style", "display: block;");
         }
       }
     });
@@ -110,17 +112,17 @@ class MessengerContainer {
     this.setWelcomeMessage();
   }
 
-  setWelcomeMessage(welcome = this.welcome ) {
+  setWelcomeMessage(welcome = this.welcome) {
     // Display Welcome message
     this.welcome = welcome;
-    let messageRow = document.createElement("div");
-    this.setStyle(messageRow, "welcomeMessage"); 
+    const messageRow = document.createElement("div");
+    this.setStyle(messageRow, "welcomeMessage");
     messageRow.className = "message_welcome";
     messageRow.innerText = welcome || getLocalizedText("Welcome message");
     this.messengerContent.appendChild(messageRow);
   }
 
-  htmlLink(text) {
+  static htmlLink(text) {
     return (text || "").replace(
       /([^\S]|^)(((https?:\/\/)|(www\.))(\S+))/gi,
       (match, space, url) => {
@@ -191,10 +193,10 @@ class MessengerContainer {
       if (buf.length > 0) {
         elements.push({ value: buf, type: "text" });
       }
-      elements.forEach((el, i) => {
+      elements.forEach((el) => {
         // button and br
         // TODO link / img
-        let element = null;
+        element = null;
         if (el.type === "button") {
           element = document.createElement("button");
           element.className = "message-button mdx-button";
@@ -202,9 +204,8 @@ class MessengerContainer {
           element.addEventListener("click", (e) => {
             e.preventDefault();
             if (el.value.length > 0) {
-              let result = false;
               if (this.onSendMessage) {
-                result = this.onSendMessage(el.value);
+                this.onSendMessage(el.value);
               }
             }
           });
@@ -236,96 +237,104 @@ class MessengerContainer {
           }
         } else {
           element = document.createElement("span");
-          element.innerHTML = this.htmlLink(el.value);
+          element.innerHTML = MessengerContainer.htmlLink(el.value);
         }
         container.appendChild(element);
       });
       /* eslint-enable no-restricted-syntax */
     } else {
-      container.innerHTML = this.htmlLink(body);
+      container.innerHTML = MessengerContainer.htmlLink(body);
     }
     return container;
   }
 
-  appendMessage(message){
-    let messageRow = document.getElementById("msg_"+ message.id);
+  appendMessage(message) {
+    let messageRow = document.getElementById(`msg_${message.id}`);
     if (messageRow) {
       // TODO check if body is different
       return;
     }
     const fromUser = message.from;
-    const user = this.participants[fromUser]; 
+    const user = this.participants[fromUser];
     let dest = "you";
     let icon = "default";
     if (user) {
-      dest = user.dest;
-      icon = user.icon;
+      ({ dest, icon } = user);
     }
-    let theme = this.theme.fromMessage || { };
+    let theme = this.theme.fromMessage || {};
     if (dest === "you") {
-      theme = this.theme.toMessage || { };
+      theme = this.theme.toMessage || {};
     }
     messageRow = document.createElement("div");
-    messageRow.id = "msg_" + message.id;
-    messageRow.className = "message " + dest + " " + icon;
+    messageRow.id = `msg_${message.id}`;
+    messageRow.className = `message ${dest} ${icon}`;
     messageRow.setAttribute("timestamp", message.created_time);
     let child = document.createElement("div");
     child.className = "circle-wrapper animated bounceIn";
-    this.setSubStyle(child, theme.icon);
+    MessengerContainer.setSubStyle(child, theme.icon);
     messageRow.appendChild(child);
     child = document.createElement("div");
     child.className = "text-wrapper animated fadeIn";
-    this.setSubStyle(child, theme.text);
+    MessengerContainer.setSubStyle(child, theme.text);
     child.appendChild(this.createMessage(message));
     messageRow.appendChild(child);
-    
-    const children = this.messengerContent.children;
+
+    const { children } = this.messengerContent;
     let b = true;
     // console.log("message.created_time", message.timestamp, message.created_time);
-    for (let i = 0; i < children.length; i++) {
-      const c = children[i];
+    // eslint-disable-next-line no-restricted-syntax
+    for (const c of children) {
       if (c.hasAttribute("timestamp")) {
-        const timestamp = parseInt(c.getAttribute("timestamp"));
+        const timestamp = parseInt(c.getAttribute("timestamp"), 10);
         if (message.created_time < timestamp) {
           this.messengerContent.insertBefore(messageRow, c);
           b = false;
           break;
-        }  
+        }
       }
     }
     if (b) {
-      this.messengerContent.appendChild(messageRow);      
+      this.messengerContent.appendChild(messageRow);
     }
 
     const node = this.messengerContent;
     node.scrollTop = node.scrollHeight;
   }
 
-  render(theme = { }) {
+  render(theme = {}) {
     this.theme = theme;
     const container = document.createElement("div");
     container.className = "dialog_bg";
-    
+
     const messengerBox = document.createElement("div");
     messengerBox.className = "messenger-box messenger-box-app";
-    // this.setStyle(messengerBox, "messengerBox", "width: 520px; margin: 4% auto; box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);"); 
-  
+    // this.setStyle(messengerBox, "messengerBox", "width: 520px; margin: 4% auto; box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);");
+
     this.messengerContent = document.createElement("div");
-    this.messengerContent.className = "messenger-content messenger-content-app bounceOutRight bounceInRight";
-    // this.setStyle(this.messengerContent, "messengerContent", "height: calc(100% - 40px);");     
+    this.messengerContent.className =
+      "messenger-content messenger-content-app bounceOutRight bounceInRight";
+    // this.setStyle(this.messengerContent, "messengerContent", "height: calc(100% - 40px);");
     messengerBox.appendChild(this.messengerContent);
-    
+
     this.oplaPowered = document.createElement("div");
     this.oplaPowered.className = "opla-powered";
-    this.oplaPowered.innerHtml= "<a href='https://opla.ai'>powered by Opla.ai</a>";
+    this.oplaPowered.innerHtml =
+      "<a href='https://opla.ai'>powered by Opla.ai</a>";
     messengerBox.appendChild(this.oplaPowered);
     const messengerBoxActions = document.createElement("div");
     messengerBoxActions.className = "messenger-box__actions";
-    this.setStyle(messengerBoxActions, "messengerBoxActions", "background:white;");
-    messengerBox.appendChild(messengerBoxActions);  
-    const textField = this.renderTextField({ label: getLocalizedText("Your message"), onEnter: this.onSendMessage });
+    this.setStyle(
+      messengerBoxActions,
+      "messengerBoxActions",
+      "background:white;",
+    );
+    messengerBox.appendChild(messengerBoxActions);
+    const textField = MessengerContainer.renderTextField({
+      label: getLocalizedText("Your message"),
+      onEnter: this.onSendMessage,
+    });
     messengerBoxActions.appendChild(textField);
-    
+
     container.appendChild(messengerBox);
 
     this.container = container;

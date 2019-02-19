@@ -9,7 +9,7 @@ import EventEmitter from "./eventEmitter";
 
 /**
  * Websocket service
- * 
+ *
  */
 class SocketService extends EventEmitter {
   constructor(url) {
@@ -34,7 +34,7 @@ class SocketService extends EventEmitter {
       let event = null;
       if (d.charAt(0) === "{" || d.charAt(0) === "[") {
         const o = JSON.parse(d);
-        event = o.event;
+        ({ event } = o);
         data = o.result;
       } else {
         event = d;
@@ -59,7 +59,7 @@ class SocketService extends EventEmitter {
     });
     const that = this;
     this.interval = setInterval(() => {
-      if ((!that.socket) && (!that.running)) {
+      if (!that.socket && !that.running) {
         that.start();
       }
     }, 1000);

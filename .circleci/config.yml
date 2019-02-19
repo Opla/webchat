@@ -1,0 +1,53 @@
+version: 2.1
+executors: 
+  webchat-workspace:
+    docker:
+      - image: circleci/node:8
+    working_directory: ~/webchat
+jobs:
+  build:
+    executor: webchat-workspace
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run: yarn lint
+      - run: yarn build:prod
+      - run: mkdir -p workspace && cp -R dist workspace/dist
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - dist
+
+  deploy:
+    executor: webchat-workspace
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "94:48:d6:71:5c:ad:3a:82:26:61:7f:2c:39:c8:54:d9"
+      - attach_workspace:
+          at: workspace
+      - run: rm workspace/dist/config-sample.php
+      - run: echo $SSH_KNOWN >> ~/.ssh/known_hosts
+      - run: scp -P$SSH_PORT -r workspace/dist/* circleci@$SSH_HOST:$SSH_PATH
+
+
+workflows:
+  version: 2.1
+  lint-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+        # filters:
+        #   branches:
+        #     only: master

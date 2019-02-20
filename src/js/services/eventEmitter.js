@@ -16,7 +16,7 @@ class EventEmitter {
   }
 
   on(event, listener) {
-    if ((!this.events[event]) || (!Array.isArray(this.events[event]))) {
+    if (!this.events[event] || !Array.isArray(this.events[event])) {
       this.events[event] = [];
     }
     this.events[event].push(listener);

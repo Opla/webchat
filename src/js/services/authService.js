@@ -49,7 +49,7 @@ class AuthService {
           this.user_id = data.user_id;
         }
       } catch (e) {
-        logger.error(e);
+        throw e;
       }
     }
   }
@@ -66,7 +66,7 @@ class AuthService {
     try {
       localStorage.setItem(this.client.clientId, JSON.stringify(storage));
     } catch (e) {
-      logger.error(e);
+      throw e;
     }
   }
 
@@ -137,7 +137,7 @@ class AuthService {
       });
     } catch (error) {
       response.error = error.message;
-      logger.error(error);
+      throw error;
     }
 
     if (response.error) {
@@ -176,7 +176,7 @@ class AuthService {
       });
     } catch (error) {
       response.error = error.message;
-      logger.error(error);
+      throw error;
     }
 
     if (response.error) {

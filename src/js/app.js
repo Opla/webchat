@@ -12,8 +12,6 @@ import MessengerContainer from "./components/messengerContainer";
 import WebService from "./services/webService";
 import fetch from "./services/fetch";
 
-import "./services/logger";
-
 /**
  * Main application Opla Webchat client
  */
@@ -100,8 +98,7 @@ const initServices = async () => {
         language: opla.config.language,
       };
     } catch (e) {
-      logger.error(`Can't fetch bot's params : ${e.message}`);
-      throw new Error(e.message);
+      throw new Error(`Can't fetch bot's params : ${e.message}`);
     }
   }
   // console.log("opla.config=", opla.config);
@@ -132,7 +129,6 @@ const initServices = async () => {
 
 const getUsername = () => {
   const { username } = app.authService.username;
-  logger.info("username=", username);
   return username;
 };
 
@@ -404,12 +400,10 @@ const start = async () => {
     await authenticate();
     await launchServices();
   } catch (error) {
-    logger.error(error);
     displayError(error);
   }
 };
 
 window.addEventListener("load", () => {
-  logger.info("Opla.ai webchat client");
   start();
 });

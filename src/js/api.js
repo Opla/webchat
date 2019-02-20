@@ -22,6 +22,7 @@ class Api {
     const isAuth = await this.authService.isAccessTokenValid();
     let attributes = null;
     if (isAuth) {
+      await this.authService.authorizeAnonymous();
       attributes = await this.authService.getAttributes();
     }
     return attributes;

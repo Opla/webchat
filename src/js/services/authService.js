@@ -103,6 +103,16 @@ class AuthService {
     return this.requestAccessToken({ username, password });
   }
 
+  async authorizeAnonymous() {
+    await this.requestAccessToken(
+      {
+        username: this.username,
+        password: this.client.anonymous_secret,
+      },
+      true,
+    );
+  }
+
   async authorizeAccess({ username, password, scope = null }) {
     // console.log("WIP", "AuthService.authorizeAccess " + username);
     const url = this.buildUrl(`${this.client.url}authorize`);

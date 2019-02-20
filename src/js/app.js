@@ -85,6 +85,9 @@ const initServices = async () => {
       const response = await fetch(
         `${protocol}://${uri}${pathname}/bots/params/${opla.config.token}`,
       );
+      if (response.error) {
+        throw response.error;
+      }
       const params = response.data;
       opla.config = {
         botId: params.botId,
@@ -402,7 +405,7 @@ const start = async () => {
     await launchServices();
   } catch (error) {
     logger.error(error);
-    displayError(error.message);
+    displayError(error);
   }
 };
 

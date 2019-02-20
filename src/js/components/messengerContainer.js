@@ -124,28 +124,21 @@ class MessengerContainer {
 
   static htmlLink(text) {
     return (text || "").replace(
-      /([^\S]|^)(((https?:\/\/)|(www\.))(\S+))/gi,
-      (match, space, url) => {
-        let href = url;
-        let txt = href;
-        const s = href.indexOf("|");
-        if (s > 0) {
-          href = href.substring(0, s);
-          txt = url.substring(s + 1);
+      // the regex can capture link like [complexLabel](complexUrl) or simple url
+      // https?:\/\/\S* capture simple url on http(s) and return to match argument
+      // \[(.*?)\]\((.*?)\) capture markdown style link and return complexLabel & complexUrl argument
+      /https?:\/\/\S*|\[(.*?)\]\((.*?)\)/gi,
+      (match, complexLabel, complexUrl) => {
+        let url = match;
+        let label = url;
+        if (complexLabel) {
+          label = complexLabel;
+          url = complexUrl;
         }
-        if (!href.match("^https?://")) {
-          href = `http://${href}`;
+        if (url.match(/\.(jpg|jpeg|gif|png)$/gi)) {
+          return `<a href="${url}" target="_blank" rel="noopener noreferrer"><img src="${url}" alt="${label}" /></a>`;
         }
-        const h = href.toLowerCase();
-        if (
-          h.indexOf(".png") > 0 ||
-          h.indexOf(".gif") > 0 ||
-          h.indexOf(".jpg") > 0 ||
-          h.indexOf(".jpeg") > 0
-        ) {
-          return `${space}<img src="${href}" alt="${txt}" />`;
-        }
-        return `${space}<a href="${href}" target="_blank" rel="noopener noreferrer">${txt}</a>`;
+        return `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`;
       },
     );
   }
@@ -211,30 +204,6 @@ class MessengerContainer {
           });
         } else if (el.type === "br") {
           element = document.createElement("br");
-        } else if (el.type === "a" || el.type === "img") {
-          let href = el.value;
-          let text = href;
-          const s = href.indexOf("|");
-          if (s > 0) {
-            text = href.substring(s + 1);
-            href = href.substring(0, s);
-          }
-          const h = href.toLowerCase();
-          if (
-            h.indexOf(".png") > 0 ||
-            h.indexOf(".gif") > 0 ||
-            h.indexOf(".jpg") > 0 ||
-            h.indexOf(".jpeg") > 0
-          ) {
-            element = document.createElement("img");
-            element.src = href;
-          } else {
-            element = document.createElement("a");
-            element.href = href;
-            element.target = "_blank";
-            element.rel = "noopener noreferrer";
-            element.innerHTML = text;
-          }
         } else {
           element = document.createElement("span");
           element.innerHTML = MessengerContainer.htmlLink(el.value);

@@ -109,7 +109,9 @@
 } 
 
 .message img {
-  max-width: 240px;
+  max-width: 100%;
+  display: block;
+  margin: 5px auto;
 }
 
 .message .text-wrapper {

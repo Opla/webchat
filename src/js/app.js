@@ -132,23 +132,23 @@ const getUsername = () => {
   return username;
 };
 
-const sendSandboxMessage = (body) => {
+const sendSandboxMessage = async (body) => {
   // console.log("send sandbox message", body);
   const message = { from: getUsername(), body };
   // WIP send message
   if (body === "#reset") {
-    app.api.resetSandbox(app.bot.id);
+    await app.api.resetSandbox(app.bot.id);
     return true;
   }
   if (app.bot && app.conversationId) {
-    app.api.sendSandboxMessage(app.bot.id, app.conversationId, message);
+    await app.api.sendSandboxMessage(app.bot.id, app.conversationId, message);
     return true;
   }
   // app.messenger.appendMessage(message);
   return false;
 };
 
-const sendMessage = (body) => {
+const sendMessage = async (body) => {
   // console.log("send message", body);
   if (opla.config.sandbox) {
     return sendSandboxMessage(body);
@@ -157,11 +157,11 @@ const sendMessage = (body) => {
   const message = { from: username, body };
   // WIP send message
   if (body === "#reset") {
-    app.api.resetConversationMessages(app.conversationId);
+    await app.api.resetConversationMessages(app.conversationId);
     return true;
   }
   if (app.conversationId) {
-    app.api.sendConversationMessage(app.conversationId, message);
+    await app.api.sendConversationMessage(app.conversationId, message);
     return true;
   }
   // app.messenger.appendMessage(message);

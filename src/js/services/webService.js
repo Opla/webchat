@@ -40,7 +40,7 @@ class WebService {
             }
           })
           .catch((error) => {
-            reject(error.message);
+            reject(error);
           });
       }
     });

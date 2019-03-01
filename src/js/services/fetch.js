@@ -27,11 +27,11 @@ const fetch = (url, data = null, method = null, headers = {}) => {
       xhr.setRequestHeader(key, h[key]);
     });
     xhr.onload = () => {
+      const res = JSON.parse(xhr.response);
       if (xhr.status >= 200 && xhr.status < 300) {
-        const res = JSON.parse(xhr.response);
         resolve({ data: res, status: xhr.status });
       } else {
-        reject(Error(xhr.statusText));
+        reject(res);
       }
     };
     xhr.onerror = () => reject(xhr.statusText);

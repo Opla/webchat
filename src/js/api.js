@@ -147,10 +147,26 @@ class Api {
   }
 
   async sendConversationMessage(conversationId, message) {
-    return this.webService.post(
-      `conversations/${conversationId}/messages`,
-      message,
-    );
+    try {
+      await this.webService.post(
+        `conversations/${conversationId}/messages`,
+        message,
+      );
+    } catch ({ error, status }) {
+      // If token is invalid
+      if (status === 401) {
+        try {
+          // Try to authenticate anounymous & resend message
+          await this.authService.authorizeAnonymous();
+          await this.sendConversationMessage(conversationId, message);
+        } catch {
+          // Auto connexion & resend have fail
+          window.location.reload();
+        }
+      } else {
+        throw error;
+      }
+    }
   }
 
   async resetConversationMessages(conversationId) {

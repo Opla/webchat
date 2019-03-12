@@ -95,15 +95,24 @@
   padding-bottom: 0px;
   padding-left: 10px;
 }
+
+.message-body {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
 .next {
   margin-top: 2px;
   padding: 0px  10px;	
 }
+
 .message .circle-wrapper {
   height: 42px;
   width: 42px;
   border-radius: 50%;
 }
+
 .next .circle-wrapper {
   visibility: hidden;
 } 

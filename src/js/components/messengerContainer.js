@@ -66,6 +66,7 @@ class MessengerContainer {
     const container = document.createElement("div");
     container.className = "mdx-textfield";
     const input = document.createElement("input");
+    input.setAttribute("maxlength", "280");
     input.setAttribute("type", "text");
     input.className = "mdx-textfield__input";
     input.id = "chat-input-field";
@@ -145,6 +146,7 @@ class MessengerContainer {
 
   createMessage(message) {
     const container = document.createElement("span");
+    container.className = "message-body";
     const { body } = message;
     if (body && body.indexOf("<b") >= 0) {
       /* eslint-disable no-restricted-syntax */

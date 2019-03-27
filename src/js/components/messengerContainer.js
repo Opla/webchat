@@ -70,25 +70,22 @@ class MessengerContainer {
     onEnter = null,
   }) {
     const container = document.createElement("div");
-    container.className = "mdx-textfield";
+    container.className = "SendMessage-textField";
     const input = document.createElement("input");
     input.setAttribute("autocomplete", "off");
     input.setAttribute("maxlength", "280");
     input.setAttribute("type", "text");
-    input.className = "mdx-textfield__input";
+    input.className = "SendMessage-input";
     input.id = "chat-input-field";
     container.appendChild(input);
-    let s = document.createElement("span");
-    s.className = "mdx-textfield__highlight";
-    container.appendChild(s);
-    s = document.createElement("span");
-    s.className = "mdx-textfield__bar";
+    const s = document.createElement("span");
+    s.className = "SendMessage-bar";
     container.appendChild(s);
     let l = null;
     if (label) {
       l = document.createElement("label");
       l.setAttribute("for", "chat-input-field");
-      l.className = "mdx-textfield__label";
+      l.className = "SendMessage-label";
       l.innerText = label;
       container.appendChild(l);
     }
@@ -125,7 +122,7 @@ class MessengerContainer {
     this.welcome = welcome;
     const messageRow = document.createElement("div");
     this.setStyle(messageRow, "welcomeMessage");
-    messageRow.className = "message_welcome";
+    messageRow.className = "MessengerBox-welcomeHeader";
     messageRow.innerText = welcome || getLocalizedText("Welcome message");
     this.messengerContent.appendChild(messageRow);
   }
@@ -153,7 +150,7 @@ class MessengerContainer {
 
   createMessage(message) {
     const container = document.createElement("span");
-    container.className = "message-body";
+    container.className = "Message-body";
     const { body } = message;
     if (body && body.indexOf("<b") >= 0) {
       /* eslint-disable no-restricted-syntax */
@@ -201,7 +198,7 @@ class MessengerContainer {
         element = null;
         if (el.type === "button") {
           element = document.createElement("button");
-          element.className = "message-button mdx-button";
+          element.className = "Message-button";
           element.innerHTML = el.value;
           element.addEventListener("click", (e) => {
             e.preventDefault();
@@ -245,14 +242,14 @@ class MessengerContainer {
     }
     messageRow = document.createElement("div");
     messageRow.id = `msg_${message.id}`;
-    messageRow.className = `message ${dest} ${icon}`;
+    messageRow.className = `Message ${dest} ${icon}`;
     messageRow.setAttribute("timestamp", message.created_time);
     let child = document.createElement("div");
-    child.className = "circle-wrapper animated bounceIn";
+    child.className = "Message-avatar Message-avatar_animated";
     MessengerContainer.setSubStyle(child, theme.icon);
     messageRow.appendChild(child);
     child = document.createElement("div");
-    child.className = "text-wrapper animated fadeIn";
+    child.className = "Message-text Message-text_animated";
     MessengerContainer.setSubStyle(child, theme.text);
     child.appendChild(this.createMessage(message));
     messageRow.appendChild(child);
@@ -284,30 +281,23 @@ class MessengerContainer {
     this.display = display;
 
     const container = document.createElement("div");
-    container.className = "dialog_bg";
+    container.className = "Messenger-scrim";
 
     const messengerBox = document.createElement("div");
-    messengerBox.className = "messenger-box messenger-box-app";
-    // this.setStyle(messengerBox, "messengerBox", "width: 520px; margin: 4% auto; box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);");
+    messengerBox.className = "MessengerBox";
 
     this.messengerContent = document.createElement("div");
-    this.messengerContent.className =
-      "messenger-content messenger-content-app bounceOutRight bounceInRight";
-    // this.setStyle(this.messengerContent, "messengerContent", "height: calc(100% - 40px);");
+    this.messengerContent.className = "MessengerBox-content";
     messengerBox.appendChild(this.messengerContent);
 
     this.oplaPowered = document.createElement("div");
     this.oplaPowered.className = "opla-powered";
     this.oplaPowered.innerHtml =
       "<a href='https://opla.ai'>powered by Opla.ai</a>";
+
     messengerBox.appendChild(this.oplaPowered);
     const messengerBoxActions = document.createElement("div");
-    messengerBoxActions.className = "messenger-box__actions";
-    this.setStyle(
-      messengerBoxActions,
-      "messengerBoxActions",
-      "background:white;",
-    );
+    messengerBoxActions.className = "SendMessage";
     messengerBox.appendChild(messengerBoxActions);
     const textField = MessengerContainer.renderTextField({
       label: getLocalizedText("Your message"),

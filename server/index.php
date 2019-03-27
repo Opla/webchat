@@ -94,7 +94,6 @@ function init()
               baseUrl: "'.BASE_URL.'",
               language: "fr" 
             }};
-            (function(o,p,l,a,i){a=p.createElement(l),i=p.getElementsByTagName(l)[0];a.async=1;a.src=o;i.parentNode.insertBefore(a,i)})(opla.config.baseUrl+"/js/app.js",document,"script");
             </script>';
         return;
     }
@@ -121,7 +120,6 @@ function init()
             secure: '.$secure.',
             display: '.$display.',
         }};
-        (function(o,p,l,a,i){a=p.createElement(l),i=p.getElementsByTagName(l)[0];a.async=1;a.src=o;i.parentNode.insertBefore(a,i)})("/js/app.js",document,"script");
         </script>';
 }
 

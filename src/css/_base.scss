@@ -1,0 +1,51 @@
+/**
+ * Copyright (c) 2015-present, CWB SAS
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@import "./variables";
+
+html,
+body {
+  font-family: $webchat-font-family;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 24px;
+  }
+
+  @media screen and (display-mode: standalone) {
+    font-size: 24px;
+  }
+}
+
+html {
+  box-sizing: border-box;
+  color: rgba($black, 0.87);
+  line-height: 1.4;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+::selection {
+  background: $body-selection-bg-color;
+  text-shadow: none;
+}
+
+:focus {
+  outline: 0px solid transparent;
+}

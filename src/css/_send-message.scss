@@ -1,0 +1,132 @@
+/**
+ * Copyright (c) 2015-present, CWB SAS
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+/* Inspiration : https://codepen.io/sevilayha/pen/IdGKH */
+
+@import "./variables";
+
+.SendMessage {
+  display: flex;
+  flex: 1;
+  box-ordinal-group: 3;
+  -webkit-box-ordinal-group: 3;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+  box-sizing: border-box;
+  padding: 8px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  min-height: 40px;
+  background: $white;
+  box-shadow: $elevation2;
+}
+
+.SendMessage-textField {
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+  background-color: rgba($black, 0.05);
+  padding: 0;
+
+  &:before {
+    content: "send";
+    font-family: "Material Icons";
+    width: 26px;
+    height: 26px;
+    font-size: 20px;
+    color: rgba($black, 0.26);
+    position: absolute;
+    top: 8px;
+    right: 4px;
+  }
+
+  &:hover {
+    &:before {
+      color: $send-message-actions-color;
+    }
+  }
+}
+
+.SendMessage-input {
+  color: rgba($black, 0.6);
+  font-size: 16px;
+  font-weight: 300;
+  color: $send-message-text-color;
+  margin: 4px 0;
+  padding: 4px 8px;
+  background: none;
+  display: block;
+  width: calc(100% - 32px);
+  border: none;
+
+  &:focus {
+    outline: none;
+
+    ~ .SendMessage-bar {
+      &:before,
+      &:after {
+        width: 50%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 28px;
+  }
+
+  @media screen and (display-mode: standalone) {
+    font-size: 34px;
+  }
+}
+
+.SendMessage-label {
+  color: rgba($black, 0.26);
+  font-size: 14px;
+  font-weight: 200;
+  top: 4px;
+  right: 4px;
+  bottom: 4px;
+  left: 4px;
+  padding: 4px 8px;
+  pointer-events: none;
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: left;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 28px;
+  }
+
+  @media screen and (display-mode: standalone) {
+    font-size: 34px;
+  }
+}
+
+.SendMessage-bar {
+  position: relative;
+  display: block;
+  width: 100%;
+
+  &:before,
+  &:after {
+    content: "";
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    position: absolute;
+    background: $send-message-actions-color;
+    transition: 0.2s ease all;
+  }
+  &:before {
+    left: 50%;
+  }
+  &:after {
+    right: 50%;
+  }
+}

@@ -66,6 +66,7 @@ class MessengerContainer {
     const container = document.createElement("div");
     container.className = "mdx-textfield";
     const input = document.createElement("input");
+    input.setAttribute("autocomplete", "off");
     input.setAttribute("maxlength", "280");
     input.setAttribute("type", "text");
     input.className = "mdx-textfield__input";

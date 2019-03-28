@@ -27,6 +27,12 @@ html {
   box-sizing: border-box;
   color: rgba($black, 0.87);
   line-height: 1.4;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {

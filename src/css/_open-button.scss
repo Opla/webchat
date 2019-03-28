@@ -13,20 +13,29 @@
   border-radius: 50%;
   height: 48px;
   width: 48px;
+  cursor: pointer;
   line-height: 48px;
   text-align: center;
   box-shadow: $elevation5;
-  background: $open-button-bg-color;
+  background-color: $open-button-bg-color;
 
-  & > img {
+  &:before {
+    content: "";
+    background-image: url("/images/opla-icon.png");
     width: 32px;
     height: 32px;
-    margin: 10px 4px;
-    opacity: 0.5;
-    cursor: pointer;
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-size: 200%;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    transition: all ease-in-out .12s;
   }
 
-  &:hover > img {
-    opacity: 1;
+  &:hover:before {
+    background-position: top left;
   }
 }

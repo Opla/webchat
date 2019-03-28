@@ -184,9 +184,6 @@ const initMessenger = () => {
 const displayMessengerButton = () => {
   const el = document.createElement("div");
   el.className = "OpenButton";
-  const img = document.createElement("img");
-  img.setAttribute("src", `${baseUrl}/images/opla-logo.png`);
-  el.appendChild(img);
   el.addEventListener("click", (e) => {
     e.preventDefault();
     app.messenger.toggleDisplay();

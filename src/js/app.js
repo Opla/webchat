@@ -175,7 +175,7 @@ const appendBeforeScript = (element) => {
 
 const initMessenger = () => {
   app.messenger = new MessengerContainer(sendMessage);
-  const container = app.messenger.render(opla.theme);
+  const container = app.messenger.render(opla.theme, opla.config.display);
   appendBeforeScript(container);
 };
 

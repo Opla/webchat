@@ -33,10 +33,17 @@ $elevation-message: 0px 1px 2px 0px rgba($shadow-color, 0.1);
 // Messenger box
 $messenger-box-content-bg-color: $gray-100;
 $messenger-scrim-bg-color: rgba($gray-500, .3);
+$messenger-box-header-font-weight: 500;
 //
 // Messages
 $message-avatar-size: 42px;
 $message-text-border-radius: 20px;
+//
+// Messsage from bot
+$message-from-bot-font-weight: 500;
+//
+// Messages from user
+$message-from-user-font-weight: 500;
 
 
 // ------------------------------------------------
@@ -49,13 +56,11 @@ $webchat-font-family: var(--font-family);
 // Messenger box
 $messenger-box-header-bg-color: var(--messenger-box-header-bg-color);
 $messenger-box-header-text-color: var(--messenger-box-header-text-color);
-$messenger-box-header-font-weight: var(--messenger-box-header-font-weight);
 //
 // Messages from bot
 $message-from-bot-avatar-img-url: var(--from-bot-avatar);
 $message-from-bot-bg-color: var(--from-bot-bg-color);
 $message-from-bot-text-color: var(--from-bot-text-color);
-$message-from-bot-font-weight: var(--from-bot-font-weight);
 $message-from-bot-button-bg-color: var(--from-bot-button-bg-color);
 $message-from-bot-button-border-color: var(--from-bot-button-border-color);
 $message-from-bot-button-text-color: var(--from-bot-button-text-color);
@@ -65,7 +70,6 @@ $disable-user-avatar: var(--disable-user-avatar);
 $message-from-user-avatar-img-url: var(--from-user-avatar);
 $message-from-user-bg-color: var(--from-user-bg-color);
 $message-from-user-text-color: var(--from-user-text-color);
-$message-from-user-font-weight: var(--from-user-font-weight);
 //
 // Send message
 $send-message-text-color: var(--send-message-text-color);

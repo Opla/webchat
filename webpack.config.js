@@ -42,11 +42,6 @@ module.exports = {
         force: true,
       },
       {
-        from: "./src/fonts",
-        to: path.resolve(__dirname, "./dist/fonts"),
-        force: true,
-      },
-      {
         from: "./server",
         to: path.resolve(__dirname, "./dist"),
         force: true,

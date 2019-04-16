@@ -50,8 +50,9 @@
     }
 
     .Message-text {
+      // width: calc(100% - #{$message-avatar-size} - 22px);
       background-color: $message-from-user-bg-color;
-      text-align: right;
+      text-align: left;
       color: $message-from-user-text-color;
       border-radius: $message-text-border-radius $message-text-border-radius $message-text-border-radius $message-text-border-radius;
       box-shadow: $elevation-message;

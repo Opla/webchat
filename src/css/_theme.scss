@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// -------------------------------------
-// ###### DOCNDOC theme definition #####
-// -------------------------------------
+// -----------------------------
+// ###### theme definition #####
+// -----------------------------
 
 :root {
   //
@@ -20,7 +20,7 @@
   --messenger-box-header-font-weight: 500; // ####### NO SÉ
   //
   // Messsage from bot
-  --from-bot-avatar: url("/images/docndoc-avatar-bot.png"); // ####### TRICKY
+  --from-bot-avatar: url("/images/default-avatar.png"); // ####### TRICKY
   --from-bot-bg-color: #4691EA;
   --from-bot-text-color: #FFFFFF;
   --from-bot-font-weight: normal; // ####### NO SÉ
@@ -30,7 +30,7 @@
   //
   // Messages from user
   --disable-user-avatar: false; // ####### A REVOIR
-  --from-user-avatar: url("/images/docndoc-avatar-user.png"); // ####### TRICKY
+  --from-user-avatar: url("/images/default-avatar.png"); // ####### TRICKY
   --from-user-bg-color: #FFFFFF;
   --from-user-text-color: #575757;
   --from-user-font-weight: normal; // ####### NO SÉ
@@ -43,5 +43,5 @@
   --open-button-background-color: #F27935;
   //
   // Watermark
-  --watermark: url("/images/docndoc-watermark.png"); // ####### TRICKY
+  --watermark: url("/images/Opla-AI.svg"); // ####### TRICKY
 }

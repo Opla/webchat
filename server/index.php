@@ -83,7 +83,7 @@ function init()
     if (isset($_GET["d"])) {
         $display = $_GET["d"];
     } else {
-        $display = "";
+        $display = "true";
     }
 
     if (DIRECT_TOKEN === true) {
@@ -119,7 +119,7 @@ function init()
             host: "'.$parts['host'].'", port: "'.$parts['port'].'",
             anonymous_secret: "'.$policies['anonymous_secret'].'",
             secure: '.$secure.',
-            display: "'.$display.'",
+            display: '.$display.',
         }};
         (function(o,p,l,a,i){a=p.createElement(l),i=p.getElementsByTagName(l)[0];a.async=1;a.src=o;i.parentNode.insertBefore(a,i)})("/js/app.js",document,"script");
         </script>';

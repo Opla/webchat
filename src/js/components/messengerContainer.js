@@ -279,7 +279,7 @@ class MessengerContainer {
     node.scrollTop = node.scrollHeight;
   }
 
-  render(theme = {}, display = {}) {
+  render(theme = {}, display = true) {
     this.theme = theme;
     this.display = display;
 

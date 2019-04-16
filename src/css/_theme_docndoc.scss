@@ -1,0 +1,47 @@
+/**
+ * Copyright (c) 2015-present, CWB SAS
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+// -------------------------------------
+// ###### DOCNDOC theme definition #####
+// -------------------------------------
+
+:root {
+  //
+  // Font
+  --font-family: "Montserrat", sans-serif;
+  //
+  // Messenger box
+  --messenger-box-header-bg-color: #33698c;
+  --messenger-box-header-text-color: #FFFFFF;
+  --messenger-box-header-font-weight: 500; // ####### NO SÉ
+  //
+  // Messsage from bot
+  --from-bot-avatar: url("/images/docndoc-avatar-bot.png"); // ####### TRICKY
+  --from-bot-bg-color: #4691EA;
+  --from-bot-text-color: #FFFFFF;
+  --from-bot-font-weight: normal; // ####### NO SÉ
+  --from-bot-button-bg-color: #FFFFFF;
+  --from-bot-button-border-color: #F27935;
+  --from-bot-button-text-color: #F27935;
+  //
+  // Messages from user
+  --disable-user-avatar: false; // ####### A REVOIR
+  --from-user-avatar: url("/images/docndoc-avatar-user.png"); // ####### TRICKY
+  --from-user-bg-color: #FFFFFF;
+  --from-user-text-color: #575757;
+  --from-user-font-weight: normal; // ####### NO SÉ
+  //
+  // Send message
+  --send-message-text-color: #575757;
+  --send-message-actions-color: #F27935;
+  //
+  // Open button
+  --open-button-background-color: #F27935;
+  //
+  // Watermark
+  --watermark: url("/images/docndoc-watermark.png"); // ####### TRICKY
+}

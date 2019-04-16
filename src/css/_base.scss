@@ -47,11 +47,6 @@ body {
   box-sizing: inherit;
 }
 
-::selection {
-  background: $body-selection-bg-color;
-  text-shadow: none;
-}
-
 :focus {
   outline: 0px solid transparent;
 }

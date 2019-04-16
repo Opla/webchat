@@ -39,7 +39,7 @@
   padding: 16px;
   color: $messenger-box-header-text-color;
   font-size: 18px;
-  font-weight: 300;
+  font-weight: $messenger-box-header-font-weight;
   background: $messenger-box-header-bg-color;
 
   @media screen and (max-width: 1024px) {

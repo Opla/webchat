@@ -4,44 +4,51 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
- 
- // ----------------------------
-// ###### Base variables  #####
-// -----------------------------
-//
-// Colors
-$color-error: #b00020;
-$white: #ffffff;
-$gray-50: #fafafa;
-$gray-100: #f5f5f5;
-$gray-200: #eeeeee;
-$gray-300: #e0e0e0;
-$gray-400: #bdbdbd;
-$gray-500: #9795A3;
-$black: #000000;
-//
-// Shadow
-$shadow-color: $gray-500;
-$elevation0: none;
-$elevation1: 0px 1px 3px 0px rgba($shadow-color, 0.2), 0px 1px 1px 0px rgba($shadow-color, 0.14), 0px 2px 1px -1px rgba($shadow-color, 0.12);
-$elevation2: 0px 1px 5px 0px rgba($shadow-color, 0.2), 0px 2px 2px 0px rgba($shadow-color, 0.14), 0px 3px 1px -2px rgba($shadow-color, 0.12);
-$elevation3: 0px 1px 8px 0px rgba($shadow-color, 0.2), 0px 3px 4px 0px rgba($shadow-color, 0.14), 0px 3px 3px -2px rgba($shadow-color, 0.12);
-$elevation4: 0px 2px 4px -1px rgba($shadow-color, 0.2), 0px 4px 5px 0px rgba($shadow-color, 0.14), 0px 1px 10px 0px rgba($shadow-color, 0.12);
-$elevation5: 0px 3px 5px -1px rgba($shadow-color, 0.2), 0px 5px 8px 0px rgba($shadow-color, 0.14), 0px 1px 14px 0px rgba($shadow-color, 0.12);
-$elevation-message: 0px 1px 2px 0px rgba($shadow-color, 0.1);
-//
-// Messenger box
-$messenger-box-content-bg-color: $gray-100;
-$messenger-scrim-bg-color: rgba($gray-500, .3);
-//
-// Messages
-$message-avatar-size: 42px;
-$message-text-border-radius: 20px;
 
+// ------------------------------------
+// ###### ENEDIS theme definition #####
+// ------------------------------------
 
-// ------------------------------------------------
-// ###### Sass variables for theme definition #####
-// ------------------------------------------------
+:root {
+  //
+  // Font
+  --font-family: "Arial", sans-serif;
+  //
+  // Messenger box
+  --messenger-box-header-bg-color: #009AC4;
+  --messenger-box-header-text-color: #FFFFFF;
+  --messenger-box-header-font-weight: 500; // ####### NO SÉ
+  //
+  // Messsage from bot
+  --from-bot-avatar: url("/images/enedis-avatar.png"); // ####### TRICKY
+  --from-bot-bg-color: #93C90E;
+  --from-bot-text-color: #FFFFFF;
+  --from-bot-font-weight: normal; // ####### NO SÉ
+  --from-bot-button-bg-color: #005EB8;
+  --from-bot-button-border-color: transparent;
+  --from-bot-button-text-color: #FFFFFF;
+  //
+  // Messages from user
+  --disable-user-avatar: true; // ####### A REVOIR
+  --from-user-avatar: url("/images/enedis-avatar.png"); // ####### TRICKY
+  --from-user-bg-color: #FFFFFF;
+  --from-user-text-color: #575757;
+  --from-user-font-weight: normal; // ####### NO SÉ
+  //
+  // Send message
+  --send-message-text-color: #575757;
+  --send-message-actions-color: #009AC4;
+  //
+  // Open button
+  --open-button-background-color: #F9B200;
+  //
+  // Watermark
+  --watermark: url("/images/enedis-watermark.svg"); // ####### TRICKY
+}
+
+// -------------------------------------
+// ###### Sass variables definition #####
+// -------------------------------------
 //
 // Font
 $webchat-font-family: var(--font-family);

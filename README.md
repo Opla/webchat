@@ -48,6 +48,75 @@ This application should be available at: http://127.0.0.1:8085/.
 You need to use front to start a webchat, and put this url in front config's botsUrl
 
 
+## Theming
+
+The webchat can be adapted to have a specific theme.<br />
+You will need to enter a value for each of the following variables:
+
+Variable name | Concerned part | Type of variable
+------------ | ------------- | -------------
+**font-family** | The font familly for all the webchat | *CSS **font-family** value<sup>1</sup>*
+**messenger-box-header-bg-color** | The background color for the header of the webchat | *CSS **color** value<sup>2</sup>*
+**messenger-box-header-text-color** | The text color in the header | *CSS **color** value<sup>2</sup>*
+**from-bot-avatar** | The picture used for the bot's avatar | *CSS **background-image** value<sup>3</sup>*
+**from-bot-bg-color** | The background color of the bot's message | *CSS **color** value<sup>2</sup>*
+**from-bot-text-color** | The text color of the bot's message | *CSS **color** value<sup>2</sup>*
+**from-bot-button-bg-color** | The background color for the buttons in the bot's message | *CSS **color** value<sup>2</sup>*
+**from-bot-button-border-color** | The border color for the buttons in the bot's message | *CSS **color** value<sup>2</sup>*
+**from-bot-button-text-color** | The text color for the buttons in the bot's message | *CSS **color** value<sup>2</sup>*
+**display-user-avatar** | An option to display or not the avatar of the user | *Boolean*
+**from-user-avatar** | The picture used for the user's avatar | *CSS **background-image** value<sup>3</sup>*
+**from-user-bg-color** | The background color of the user's message | *CSS **color** value<sup>2</sup>*
+**from-user-text-color** | The text color of the user's message | *CSS **color** value<sup>2</sup>*
+**send-message-text-color** | The text color in the message text field | *CSS **color** value<sup>2</sup>*
+**send-message-actions-color** | The color of the bar below the text field when focused | *CSS **color** value<sup>2</sup>*
+**open-button-background-color** | The color of the button to display the webchat | *CSS **color** value<sup>2</sup>*
+**watermark** | The picture used for the watermark | *CSS **background-image** value<sup>3</sup>*
+
+**<sup>1</sup>Font-family**<br />
+In addition  of the system fonts, here is the list of some Google web fonts availlable:
+- 'Roboto', sans-serif;
+- 'Montserrat', sans-serif;
+- 'Source Sans Pro', sans-serif;
+- 'Work Sans', sans-serif;
+- 'Lato', sans-serif;
+- 'Open Sans', sans-serif;
+- 'Raleway', sans-serif;
+- 'Ubuntu', sans-serif;
+- 'Oswald', sans-serif;
+- 'PT Sans', sans-serif;
+- 'Fira Sans', sans-serif;
+- 'Merriweather', serif;
+- 'Oxygen', sans-serif;
+- 'Noto Sans', sans-serif;
+- 'Karla', sans-serif;
+- 'Lora', serif;
+- 'Frank Ruhl Libre', serif;
+- 'Playfair Display', serif;
+- 'Archivo', sans-serif;
+- 'Spectral', serif;
+- 'Fjalla One', sans-serif;
+- 'Rubik', sans-serif;
+- 'Cardo', serif;
+- 'Cormorant', serif;
+
+**<sup>2</sup>Color**<br />
+The prefered value for colors is a **6 Digit Hex Color** (#000000 for black)
+
+**<sup>3</sup>Background-image**<br />
+Specify the path to the picture used in both avatar or watermark: *url("https://bot.opla.ai/images/default-avatar.png"); for example*<br />
+You can use **.Jpg**, **.Png** or **.Svg** images.<br />
+Please note that for an avatar the minimum expected size is **42px x 42px** *(if it's a bitmap file)* and it's must be a **square image**.
+
+### Some helper images:
+
+![Basic webchat](https://bot.opla.ai/images/webchat-theming_view-basic.jpg)
+
+Some variations : 
+
+![Advanced options](https://bot.opla.ai/images/webchat-theming_view-advanced.jpg)
+
+
 ## Contributing
 
 Please, see the [CONTRIBUTING](CONTRIBUTING.md) file.

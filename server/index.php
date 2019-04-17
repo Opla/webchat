@@ -111,7 +111,7 @@ function init()
         $secure = "true";
     }
 
-    echo '<script>opla = { 
+    echo '<script id="opla-webchat-script">opla = { 
         config: { 
             botId: "'.$params['botId'].'", 
             appId: "'.$app['id'].'", 

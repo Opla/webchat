@@ -169,8 +169,8 @@ const sendMessage = async (body) => {
 };
 
 const appendBeforeScript = (element) => {
-  const scripts = document.getElementsByTagName("script");
-  document.body.insertBefore(element, scripts[0]);
+  const script = document.getElementById("opla-webchat-script");
+  document.body.insertBefore(element, script);
 };
 
 const initMessenger = () => {

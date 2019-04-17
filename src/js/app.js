@@ -12,8 +12,6 @@ import MessengerContainer from "./components/messengerContainer";
 import WebService from "./services/webService";
 import fetch from "./services/fetch";
 
-import "../css/index.scss";
-
 /**
  * Main application Opla Webchat client
  */
@@ -32,8 +30,8 @@ const localized = {
   },
 };
 
-// let baseUrl = "https://bot.opla.ai";
-let baseUrl = "http://localhost:8085";
+let baseUrl = "https://bot.opla.ai";
+// let baseUrl = "http://localhost:8085";
 
 // eslint-disable-next-line import/prefer-default-export
 export const getLocalizedText = (text) => {
@@ -125,6 +123,7 @@ const initServices = async () => {
     const url = `${uri}/${path}`;
     opla.apiConfig = { url, path, secure };
   }
+
   app.authService = new AuthService(opla.authConfig);
   app.webService = new WebService(opla.apiConfig, app.authService);
   app.api = new Api(app.webService);
@@ -223,103 +222,19 @@ const displayError = (error) => {
   app.errorBox.innerHTML = error || "error";
 };
 
-// const buildPath = (path) => {
-//   if (path.indexOf("http") === 0) {
-//     return path;
-//   }
-//   const prefix = opla.config.path || "./";
-//   return prefix + path;
-// };
-
-// const loadCSS = (filename, rel = "stylesheet", type = "text/css") => {
-//   let path = filename;
-//   if (filename.indexOf("http") !== 0) {
-//     path = buildPath(baseUrl + filename);
-//   }
-//   const css = document.createElement("link");
-//   css.setAttribute("rel", rel);
-//   css.setAttribute("type", type);
-//   css.setAttribute("href", path);
-//   document.getElementsByTagName("head")[0].appendChild(css);
-// };
-
-// const initStyle = () => {
-//   if (opla.theme && opla.theme.fonts) {
-//     opla.theme.fonts.forEach((fontName) => {
-//       loadCSS(fontName, "font", "application/font-woff");
-//     });
-//   } else {
-//     loadCSS("https://fonts.googleapis.com/icon?family=Material+Icons");
-//     loadCSS("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
-//   }
-//   // loadCSS("/css/animate.min.css");
-//   // loadCSS("/css/messenger.css");
-//   // loadCSS("/css/app.css");
-//   loadCSS("/css/index.scss");
-
-//   const style = document.createElement("style");
-//   document.getElementsByTagName("head")[0].appendChild(style);
-//   const css = style.sheet;
-//   // WIP apply css from theme
-//   if (opla.theme) {
-//     let item = opla.theme.font || {};
-//     if (item) {
-//       css.insertRule(`.body { ${item} }`, 0);
-//     }
-//     item = opla.theme.fromMessage || {};
-//     if (item.backgroundColor) {
-//       css.insertRule(
-//         `.message.from .text-wrapper:before { border-color: transparent ${
-//           item.backgroundColor
-//         } transparent transparent }`,
-//         0,
-//       );
-//     }
-//     item = opla.theme.toMessage || {};
-//     if (item.backgroundColor) {
-//       css.insertRule(
-//         `.message.you .text-wrapper:before { border-color: ${
-//           item.backgroundColor
-//         } transparent transparent transparent }`,
-//         0,
-//       );
-//     }
-//     item = opla.theme.textfield || {};
-//     if (item.highlightColor) {
-//       css.insertRule(
-//         `.mdx-textfield__bar:before, .mdx-textfield__bar:after { background: ${
-//           item.highlightColor
-//         }; }`,
-//         0,
-//       );
-//       css.insertRule(
-//         `@keyframes mdx-textfield__inputHighlighter { from { background: ${
-//           item.highlightColor
-//         }; } }`,
-//         0,
-//       );
-//       // TODO moz and webkit anim
-//       /* css.insertRule("@-moz-keyframes mdx-textfield__inputHighlighter { from { background: " + item.highlightColor + "; } }", 0);
-//       css.insertRule("@-webkit-keyframes mdx-textfield__inputHighlighter { from { background: " + item.highlightColor + "; } }", 0); */
-//     }
-//     if (item.labelColor) {
-//       css.insertRule(`.mdx-textfield__label { color: ${item.labelColor}; }`, 0);
-//     }
-//     if (item.inputColor) {
-//       css.insertRule(`.mdx-textfield__input { color: ${item.inputColor}; }`, 0);
-//     }
-//     if (item.caretColor) {
-//       css.insertRule(
-//         `.mdx-textfield__input { caret-color: ${item.caretColor}; }`,
-//         0,
-//       );
-//     }
-//     item = opla.theme.button || {};
-//     if (item.style) {
-//       css.insertRule(`button { ${item.style} }`, 0);
-//     }
-//   }
-// };
+const initStyle = () => {
+  const css = document.createElement("link");
+  css.setAttribute("rel", "stylesheet");
+  css.setAttribute("type", "text/css");
+  css.setAttribute("href", `${baseUrl}/css/index.css`);
+  document.getElementsByTagName("head")[0].appendChild(css);
+  if (opla.config.style) {
+    const root = document.documentElement;
+    Object.keys(opla.config.style).forEach((v) => {
+      root.style.setProperty(`--${v}`, opla.config.style[v]);
+    });
+  }
+};
 
 const authenticate = async () => {
   const { api } = app;
@@ -390,7 +305,7 @@ const start = async () => {
   if (opla.config.baseUrl) {
     ({ baseUrl } = opla.config);
   }
-  // initStyle();
+  initStyle();
   initScreen();
   try {
     await initServices();

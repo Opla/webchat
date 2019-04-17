@@ -1,9 +1,10 @@
+/* eslint-disable no-undef */
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
-module.exports = {
+const jsConfig = {
   entry: "./src/js/app.js",
   output: {
     path: path.resolve(__dirname, "./dist"),
@@ -18,20 +19,6 @@ module.exports = {
           loader: "babel-loader",
         },
       },
-      {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: ["css-loader", "sass-loader"],
-        }),
-      },
-      // {
-      //   test: /\.s?css$/,
-      //   use: ExtractTextWebpackPlugin.extract({
-      //     fallback: "style-loader",
-      //     use: ["css-loader", "sass-loader"],
-      //   }),
-      // },
     ],
   },
   plugins: [
@@ -52,9 +39,6 @@ module.exports = {
         force: true,
       },
     ]),
-    new ExtractTextPlugin({
-      filename: "css/index.css",
-    }),
     new HtmlWebpackPlugin({
       filename: "template.php",
       path: path.resolve(__dirname, "./dist"),
@@ -62,3 +46,29 @@ module.exports = {
     }),
   ],
 };
+
+const cssConfig = {
+  entry: "./src/css/index.scss",
+  output: {
+    path: path.resolve(__dirname, "./dist"),
+    filename: "css/index.css",
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ["css-loader", "sass-loader"],
+        }),
+      },
+    ],
+  },
+  plugins: [
+    new ExtractTextPlugin({
+      filename: "css/index.css",
+    }),
+  ],
+};
+
+module.exports = [jsConfig, cssConfig];

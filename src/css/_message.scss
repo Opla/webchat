@@ -44,9 +44,7 @@
 
     .Message-avatar {
       background-image: $message-from-user-avatar-img-url;
-      @if $disable-user-avatar {
-        display: none;
-      }
+      display: $display-user-avatar;
     }
 
     .Message-text {

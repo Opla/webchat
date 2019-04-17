@@ -21,12 +21,18 @@ class MessengerContainer {
     }
   }
 
-  toggleDisplay() {
-    if (this.display) {
-      this.hide();
-    } else if (this.container) {
-      this.container.removeAttribute("style");
+  show() {
+    if (this.container) {
+      this.container.setAttribute("style", "display: block;");
       this.display = true;
+    }
+  }
+
+  toggleDisplay() {
+    if (this.display === true) {
+      this.hide();
+    } else {
+      this.show();
     }
   }
 
@@ -273,8 +279,10 @@ class MessengerContainer {
     node.scrollTop = node.scrollHeight;
   }
 
-  render(theme = {}) {
+  render(theme = {}, display = true) {
     this.theme = theme;
+    this.display = display;
+
     const container = document.createElement("div");
     container.className = "dialog_bg";
 
@@ -310,6 +318,13 @@ class MessengerContainer {
     container.appendChild(messengerBox);
 
     this.container = container;
+
+    if (this.display === false) {
+      this.hide();
+    } else {
+      this.show();
+    }
+
     return container;
   }
 }

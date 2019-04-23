@@ -7,16 +7,14 @@
 
 @import "./variables";
 
-html,
-body {
+
+.OplaWebchat {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  box-sizing: border-box;
   font-size: 14px;
   font-weight: 400;
-  line-height: 20px;
-}
-
-html {
-  box-sizing: border-box;
-  color: rgba($black, 0.87);
   line-height: 1.4;
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
@@ -24,24 +22,16 @@ html {
   text-rendering: optimizeLegibility;
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  :focus {
+    outline: 0px solid transparent;
+  }
 }
 
-body {
-  width: 100%;
-  min-height: 100%;
-  margin: 0;
-}
 
-// .OplaWebchat {
-//   z-index: 99999;
-// }
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-:focus {
-  outline: 0px solid transparent;
-}

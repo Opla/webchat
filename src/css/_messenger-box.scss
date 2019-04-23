@@ -8,6 +8,7 @@
  @import "./variables";
 
 .MessengerBox {
+  font-family: $webchat-font-family;
   height: 79vh;
   width: 520px;
   margin: 4% auto;

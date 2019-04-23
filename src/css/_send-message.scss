@@ -9,6 +9,7 @@
 @import "./variables";
 
 .SendMessage {
+  font-family: $webchat-font-family;
   display: flex;
   flex: 1;
   box-ordinal-group: 3;
@@ -20,7 +21,7 @@
   padding: 8px;
   margin-top: 0px;
   margin-bottom: 0px;
-  height: sendMessageHeight;
+  height: $sendMessageHeight;
   background: $white;
   box-shadow: $elevation2;
 }

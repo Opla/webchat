@@ -10,10 +10,6 @@
 // -----------------------------
 //
 
-// Layout etc
-$breakpoint: 772px;
-$sendMessageHeight: 50px;
-//
 // Colors
 $color-error: #b00020;
 $white: #ffffff;
@@ -37,7 +33,7 @@ $elevation-message: 0px 1px 2px 0px rgba($shadow-color, 0.1);
 //
 // Messenger box
 $messenger-box-content-bg-color: $gray-100;
-$messenger-scrim-bg-color: rgba($gray-500, .3);
+$messenger-scrim-bg-color: rgba($black, .5);
 $messenger-box-header-font-weight: 500;
 //
 // Messages
@@ -49,6 +45,11 @@ $message-from-bot-font-weight: 500;
 //
 // Messages from user
 $message-from-user-font-weight: 500;
+//
+// Layout etc
+$breakpoint: 772px;
+$sendMessageHeight: 50px;
+$zIndex: 999999;
 
 
 // ------------------------------------------------

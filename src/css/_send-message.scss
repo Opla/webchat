@@ -34,16 +34,22 @@
 }
 
 .SendMessage-input {
-  color: rgba($black, 0.6);
-  font-size: 16px;
-  font-weight: 400;
-  color: $send-message-text-color;
-  margin: 4px 0;
-  padding: 4px 8px;
-  background: none;
-  display: block;
-  width: calc(100% - 32px);
-  border: none;
+  //reset
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  // style
+  color: rgba($black, 0.6) !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: $send-message-text-color !important;
+  margin: 4px 0 !important;
+  padding: 4px 8px !important;
+  background: none !important;
+  display: block !important;
+  width: calc(100% - 32px) !important;
+  border: none !important;
 
   &:focus {
     outline: none;

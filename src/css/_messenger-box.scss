@@ -54,4 +54,5 @@
   height: 100%;
   position: fixed;
   background-color: $messenger-scrim-bg-color;
+  z-index: $zIndex;
 }

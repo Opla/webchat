@@ -123,7 +123,7 @@
   margin: 0 10px;
   border-radius: 2px;
   font-weight: 300;
-  font-size: 14px;
+  font-size: $font-size;
   position: relative;
   opacity: 0;
 
@@ -161,6 +161,7 @@
   box-shadow: $elevation1;
   transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   font-family: inherit;
+  font-size: 12px;
   font-weight: bold;
   letter-spacing: 0.04em;
   text-decoration: none;
@@ -191,7 +192,11 @@
   }
 
   &:focus,
-  &:hover {
+  &:hover,
+  &:active {
     box-shadow: $elevation3;
+    background-color: $message-from-bot-button-bg-color;
+    color: $message-from-bot-button-text-color;
+    border-color: $message-from-bot-button-border-color;
   }
 }

@@ -36,12 +36,12 @@
 
 .SendMessage-input {
   //reset
-  font-family: inherit;
-  font-size: 100%;
-  line-height: 1.15;
-  margin: 0;
+  font-family: inherit !important;
+  font-size: 100% !important;
+  line-height: 1.15 !important;
+  margin: 0 !important;
+  height: auto !important;
   // style
-  color: rgba($black, 0.6) !important;
   font-size: 16px !important;
   font-weight: 400 !important;
   color: $send-message-text-color !important;
@@ -66,7 +66,7 @@
 
 .SendMessage-label {
   color: rgba($black, 0.26);
-  font-size: 14px;
+  font-size: $font-size;
   font-weight: 200;
   top: 4px;
   right: 4px;

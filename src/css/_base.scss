@@ -8,20 +8,10 @@
 @import "./variables";
 
 
-.OplaWebchat {
-  width: 100%;
-  min-height: 100%;
-  margin: 0;
+.OplaWebchat  {
   box-sizing: border-box;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.4;
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
   text-rendering: optimizeLegibility;
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
 
   *,
   *:before,

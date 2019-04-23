@@ -169,45 +169,44 @@ const sendMessage = async (body) => {
   return false;
 };
 
-const appendBeforeScript = (element) => {
-  const script = document.getElementById("opla-webchat-script");
-  document.body.insertBefore(element, script);
+const appendBeforeScript = (element, root = null) => {
+  if (!root) {
+    const script = document.getElementById("opla-webchat-script");
+    document.body.insertBefore(element, script);
+  } else {
+    root.appendChild(element);
+  }
 };
 
-const initMessenger = () => {
+const initMessenger = (root) => {
   app.messenger = new MessengerContainer(sendMessage);
   const container = app.messenger.render(opla.theme, opla.config.display);
-  appendBeforeScript(container);
+  appendBeforeScript(container, root);
 };
 
-const displayMessengerButton = () => {
+const displayMessengerButton = (root) => {
   const el = document.createElement("div");
   el.className = "OpenButton";
   el.addEventListener("click", (e) => {
     e.preventDefault();
     app.messenger.toggleDisplay();
   });
-  appendBeforeScript(el);
+  appendBeforeScript(el, root);
 };
 
 const initScreen = () => {
   // displayWebsiteSrc("http://opla.ai/");
 
   let el = null;
-  if (opla.theme && opla.theme.background) {
-    el = document.createElement("div");
-    el.className = "content_bg";
-    if (opla.theme.background.style) {
-      el.setAttribute("style", opla.theme.background.style);
-    }
-    document.body.insertBefore(el, document.body.firstChild);
-  }
+  const root = document.createElement("div");
+  root.className = "OplaWebchat";
+  appendBeforeScript(root);
   el = document.createElement("div");
   el.className = "Watermark";
-  appendBeforeScript(el);
-  initMessenger();
+  appendBeforeScript(el, root);
+  initMessenger(root);
 
-  displayMessengerButton();
+  displayMessengerButton(root);
 };
 
 const displayError = (error) => {

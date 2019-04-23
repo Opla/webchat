@@ -38,4 +38,8 @@
   &:hover:before {
     background-position: top left;
   }
+
+  @media screen and (max-width: $breakpoint) {
+    margin: 32px 24px;
+  }
 }

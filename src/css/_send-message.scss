@@ -20,7 +20,7 @@
   padding: 8px;
   margin-top: 0px;
   margin-bottom: 0px;
-  min-height: 40px;
+  height: sendMessageHeight;
   background: $white;
   box-shadow: $elevation2;
 }
@@ -55,14 +55,6 @@
       }
     }
   }
-
-  @media screen and (max-width: 1024px) {
-    font-size: 28px;
-  }
-
-  @media screen and (display-mode: standalone) {
-    font-size: 34px;
-  }
 }
 
 .SendMessage-label {
@@ -80,14 +72,6 @@
   overflow: hidden;
   white-space: nowrap;
   text-align: left;
-
-  @media screen and (max-width: 1024px) {
-    font-size: 28px;
-  }
-
-  @media screen and (display-mode: standalone) {
-    font-size: 34px;
-  }
 }
 
 .SendMessage-bar {

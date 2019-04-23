@@ -9,6 +9,11 @@
 // ###### Base variables  #####
 // -----------------------------
 //
+
+// Layout etc
+$breakpoint: 772px;
+$sendMessageHeight: 50px;
+//
 // Colors
 $color-error: #b00020;
 $white: #ffffff;
@@ -21,13 +26,13 @@ $gray-500: #9795A3;
 $black: #000000;
 //
 // Shadow
-$shadow-color: $gray-500;
+$shadow-color: #00000080;
 $elevation0: none;
-$elevation1: 0px 1px 3px 0px rgba($shadow-color, 0.2), 0px 1px 1px 0px rgba($shadow-color, 0.14), 0px 2px 1px -1px rgba($shadow-color, 0.12);
-$elevation2: 0px 1px 5px 0px rgba($shadow-color, 0.2), 0px 2px 2px 0px rgba($shadow-color, 0.14), 0px 3px 1px -2px rgba($shadow-color, 0.12);
-$elevation3: 0px 1px 8px 0px rgba($shadow-color, 0.2), 0px 3px 4px 0px rgba($shadow-color, 0.14), 0px 3px 3px -2px rgba($shadow-color, 0.12);
-$elevation4: 0px 2px 4px -1px rgba($shadow-color, 0.2), 0px 4px 5px 0px rgba($shadow-color, 0.14), 0px 1px 10px 0px rgba($shadow-color, 0.12);
-$elevation5: 0px 3px 5px -1px rgba($shadow-color, 0.2), 0px 5px 8px 0px rgba($shadow-color, 0.14), 0px 1px 14px 0px rgba($shadow-color, 0.12);
+$elevation1: 0px 1px 3px 0px rgba($shadow-color, 0.1), 0px 1px 1px 0px rgba($shadow-color, 0.08), 0px 2px 1px -1px rgba($shadow-color, 0.07);
+$elevation2: 0px 1px 5px 0px rgba($shadow-color, 0.1), 0px 2px 2px 0px rgba($shadow-color, 0.08), 0px 3px 1px -2px rgba($shadow-color, 0.07);
+$elevation3: 0px 1px 8px 0px rgba($shadow-color, 0.1), 0px 3px 4px 0px rgba($shadow-color, 0.08), 0px 3px 3px -2px rgba($shadow-color, 0.07);
+$elevation4: 0px 2px 4px -1px rgba($shadow-color, 0.1), 0px 4px 5px 0px rgba($shadow-color, 0.08), 0px 1px 10px 0px rgba($shadow-color, 0.07);
+$elevation5: 0px 3px 5px -1px rgba($shadow-color, 0.1), 0px 5px 8px 0px rgba($shadow-color, 0.08), 0px 1px 14px 0px rgba($shadow-color, 0.07);
 $elevation-message: 0px 1px 2px 0px rgba($shadow-color, 0.1);
 //
 // Messenger box

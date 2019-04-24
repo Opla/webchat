@@ -1,0 +1,89 @@
+/**
+ * Copyright (c) 2015-present, CWB SAS
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+ 
+ // ----------------------------
+// ###### Base variables  #####
+// -----------------------------
+//
+
+// Colors
+$color-error: #b00020;
+$white: #ffffff;
+$gray-50: #fafafa;
+$gray-100: #f5f5f5;
+$gray-200: #eeeeee;
+$gray-300: #e0e0e0;
+$gray-400: #bdbdbd;
+$gray-500: #9795A3;
+$black: #000000;
+//
+// Shadow
+$shadow-color: #00000080;
+$elevation0: none;
+$elevation1: 0px 1px 3px 0px rgba($shadow-color, 0.1), 0px 1px 1px 0px rgba($shadow-color, 0.08), 0px 2px 1px -1px rgba($shadow-color, 0.07);
+$elevation2: 0px 1px 5px 0px rgba($shadow-color, 0.1), 0px 2px 2px 0px rgba($shadow-color, 0.08), 0px 3px 1px -2px rgba($shadow-color, 0.07);
+$elevation3: 0px 1px 8px 0px rgba($shadow-color, 0.1), 0px 3px 4px 0px rgba($shadow-color, 0.08), 0px 3px 3px -2px rgba($shadow-color, 0.07);
+$elevation4: 0px 2px 4px -1px rgba($shadow-color, 0.1), 0px 4px 5px 0px rgba($shadow-color, 0.08), 0px 1px 10px 0px rgba($shadow-color, 0.07);
+$elevation5: 0px 3px 5px -1px rgba($shadow-color, 0.1), 0px 5px 8px 0px rgba($shadow-color, 0.08), 0px 1px 14px 0px rgba($shadow-color, 0.07);
+$elevation-message: 0px 1px 2px 0px rgba($shadow-color, 0.1);
+//
+// Messenger box
+$messenger-box-content-bg-color: $gray-100;
+$messenger-scrim-bg-color: rgba($black, .5);
+$messenger-box-header-font-weight: 500;
+//
+// Messages
+$message-avatar-size: 42px;
+$message-text-border-radius: 20px;
+//
+// Messsage from bot
+$message-from-bot-font-weight: 500;
+//
+// Messages from user
+$message-from-user-font-weight: 500;
+//
+// Layout, base...
+$font-size: 14px;
+$breakpoint: 772px;
+$sendMessageHeight: 50px;
+$zIndex: 999999;
+
+
+// ------------------------------------------------
+// ###### Sass variables for theme definition #####
+// ------------------------------------------------
+//
+// Font
+$webchat-font-family: var(--font-family);
+//
+// Messenger box
+$messenger-box-header-bg-color: var(--messenger-box-header-bg-color);
+$messenger-box-header-text-color: var(--messenger-box-header-text-color);
+//
+// Messages from bot
+$message-from-bot-avatar-img-url: var(--from-bot-avatar);
+$message-from-bot-bg-color: var(--from-bot-bg-color);
+$message-from-bot-text-color: var(--from-bot-text-color);
+$message-from-bot-button-bg-color: var(--from-bot-button-bg-color);
+$message-from-bot-button-border-color: var(--from-bot-button-border-color);
+$message-from-bot-button-text-color: var(--from-bot-button-text-color);
+//
+// Messages from user
+$display-user-avatar: var(--display-user-avatar);
+$message-from-user-avatar-img-url: var(--from-user-avatar);
+$message-from-user-bg-color: var(--from-user-bg-color);
+$message-from-user-text-color: var(--from-user-text-color);
+//
+// Send message
+$send-message-text-color: var(--send-message-text-color);
+$send-message-actions-color: var(--send-message-actions-color);
+//
+// Open button
+$open-button-bg-color: var(--open-button-background-color);
+//
+// Watermark
+$watermark-img-url: var(--watermark);

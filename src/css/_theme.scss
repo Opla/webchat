@@ -1,0 +1,44 @@
+/**
+ * Copyright (c) 2015-present, CWB SAS
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+// -----------------------------
+// ###### theme definition #####
+// -----------------------------
+
+:root {
+  //
+  // Font
+  --font-family: "Montserrat", sans-serif;
+  //
+  // Messenger box
+  --messenger-box-header-bg-color: #292C45;
+  --messenger-box-header-text-color: #FFFFFF;
+  //
+  // Messsage from bot
+  --from-bot-avatar: url("https://bot.opla.ai/images/opla-avatar.png");
+  --from-bot-bg-color: #292C45;
+  --from-bot-text-color: #FFFFFF;
+  --from-bot-button-bg-color: #E23F3F;
+  --from-bot-button-border-color: transparent;
+  --from-bot-button-text-color: #FFFFFF;
+  //
+  // Messages from user
+  --display-user-avatar: none;
+  --from-user-avatar: url("https://bot.opla.ai/images/default-avatar.png");
+  --from-user-bg-color: #FFFFFF;
+  --from-user-text-color: #292C45;
+  //
+  // Send message
+  --send-message-text-color: #292C45;
+  --send-message-actions-color: #E23F3F;
+  //
+  // Open button
+  --open-button-background-color: #E23F3F;
+  //
+  // Watermark
+  --watermark: url("https://bot.opla.ai/images/Opla-AI.svg");
+}

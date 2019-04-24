@@ -1,0 +1,59 @@
+/**
+ * Copyright (c) 2015-present, CWB SAS
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+ @import "./variables";
+
+.MessengerBox {
+  font-family: $webchat-font-family;
+  height: 79vh;
+  width: 520px;
+  margin: 4% auto;
+  box-shadow: $elevation3;
+  background: $messenger-box-content-bg-color;
+
+  &::-webkit-scrollbar {
+    width: 0 !important;
+  }
+
+  @media screen and (max-width: $breakpoint) {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+  }
+}
+
+//  Header
+.MessengerBox-welcomeHeader {
+  margin: 0px;
+  padding: 16px;
+  color: $messenger-box-header-text-color;
+  font-size: 18px;
+  font-weight: $messenger-box-header-font-weight;
+  background: $messenger-box-header-bg-color;
+}
+
+// Content
+.MessengerBox-content {
+  padding: 0px;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+
+  @media screen and (max-width: $breakpoint) {
+    height: calc(100% - #{$sendMessageHeight});
+  }
+}
+
+// Scrim
+.Messenger-scrim {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: $messenger-scrim-bg-color;
+  z-index: $zIndex;
+}

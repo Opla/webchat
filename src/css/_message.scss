@@ -1,0 +1,202 @@
+ /**
+ * Copyright (c) 2015-present, CWB SAS
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@import "./variables";
+
+.Message {
+  position: relative;
+  display: flex;
+  margin: calc(#{$message-avatar-size / 2} + 10px) 8px 20px 8px;
+  padding: 4px 10px 0 10px;
+
+  img {
+    max-width: 100%;
+    display: block;
+    margin: 5px auto;
+  }
+
+  // variations : from bot part
+  &.from {
+    flex-direction: row;
+
+    .Message-avatar {
+      margin-top: -$message-avatar-size / 2 + 4px;
+      background-image: $message-from-bot-avatar-img-url;
+    }
+
+    .Message-text {
+      background-color: $message-from-bot-bg-color;
+      text-align: left;
+      color: $message-from-bot-text-color;
+      border-radius: 0 $message-text-border-radius $message-text-border-radius $message-text-border-radius;
+      font-weight: $message-from-bot-font-weight;
+    }
+  }
+
+  // variations : from user part
+  &.you {
+    flex-direction: row-reverse;
+    align-items: center;
+
+    .Message-avatar {
+      background-image: $message-from-user-avatar-img-url;
+      display: $display-user-avatar;
+    }
+
+    .Message-text {
+      // width: calc(100% - #{$message-avatar-size} - 22px);
+      background-color: $message-from-user-bg-color;
+      text-align: left;
+      color: $message-from-user-text-color;
+      border-radius: $message-text-border-radius $message-text-border-radius $message-text-border-radius $message-text-border-radius;
+      box-shadow: $elevation-message;
+      font-weight: $message-from-user-font-weight;
+    }
+  }
+}
+
+.Message-avatar_animated,
+.Message-text_animated {
+  animation-fill-mode: both;
+}
+
+.Message-avatar {
+  height: $message-avatar-size;
+  width: $message-avatar-size;
+  border-radius: 50%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.Message-avatar_animated {
+  animation-duration: 0.75s;
+  animation-name: bounceIn;
+
+  @keyframes bounceIn {
+    from,
+    20%,
+    40%,
+    60%,
+    80%,
+    to {
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    0% {
+      opacity: 0;
+      transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    20% {
+      transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    40% {
+      transform: scale3d(0.9, 0.9, 0.9);
+    }
+
+    60% {
+      opacity: 1;
+      transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    80% {
+      transform: scale3d(0.97, 0.97, 0.97);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale3d(1, 1, 1);
+    }
+  }
+}
+
+.Message-text {
+  padding: 14px;
+  min-height: 48px;
+  width: 70%;
+  margin: 0 10px;
+  border-radius: 2px;
+  font-weight: 300;
+  font-size: $font-size;
+  position: relative;
+  opacity: 0;
+
+  & > a > img {
+    width: 80%;
+    padding-bottom: 16px;
+  }
+}
+
+.Message-text_animated {
+  animation-duration: 1s;
+  animation-name: fadeIn;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+.Message-body {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
+.Message-button {
+  background-color: $message-from-bot-button-bg-color;
+  color: $message-from-bot-button-text-color;
+  margin: 5px 8px;
+  box-shadow: $elevation1;
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-tap-highlight-color: transparent;
+  will-change: transform, opacity;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  min-width: 64px;
+  min-height: 32px;
+  padding: 0 16px;
+  border: solid 1px $message-from-bot-button-border-color;
+  outline: 0;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-appearance: none;
+  appearance: none;
+  overflow: hidden;
+  vertical-align: middle;
+  border-radius: 2px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    box-shadow: $elevation3;
+    background-color: $message-from-bot-button-bg-color;
+    color: $message-from-bot-button-text-color;
+    border-color: $message-from-bot-button-border-color;
+  }
+}

@@ -1,0 +1,46 @@
+/**
+ * Copyright (c) 2015-present, CWB SAS
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+ .OpenButton {
+  z-index: $zIndex;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  margin: 32px 64px;
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  cursor: pointer;
+  line-height: 48px;
+  text-align: center;
+  box-shadow: $elevation5;
+  background-color: $open-button-bg-color;
+
+  &:before {
+    content: "";
+    background-image: url("/images/opla-icon.png");
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-size: 200%;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    transition: all ease-in-out .12s;
+  }
+
+  &:hover:before {
+    background-position: top left;
+  }
+
+  @media screen and (max-width: $breakpoint) {
+    margin: 32px 24px;
+  }
+}

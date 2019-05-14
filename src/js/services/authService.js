@@ -23,6 +23,7 @@ class AuthService {
       throw new Error("AuthClient not configured");
     }
     this.client = { ...client };
+    this.storageId = `${this.client.botToken}-${this.client.clientId}`;
     this.resetAttributes();
   }
 
@@ -36,7 +37,7 @@ class AuthService {
   }
 
   loadAttributes() {
-    const storage = localStorage.getItem(this.client.clientId);
+    const storage = localStorage.getItem(this.storageId);
     if (storage) {
       try {
         const data = JSON.parse(storage);
@@ -64,7 +65,7 @@ class AuthService {
       user_id: this.userId,
     };
     try {
-      localStorage.setItem(this.client.clientId, JSON.stringify(storage));
+      localStorage.setItem(this.storageId, JSON.stringify(storage));
     } catch (e) {
       throw e;
     }
@@ -72,7 +73,7 @@ class AuthService {
 
   resetAccess() {
     this.resetAttributes();
-    localStorage.removeItem(this.client.clientId);
+    localStorage.removeItem(this.storageId);
   }
 
   checkAuthentification(shouldReset = false) {

@@ -56,6 +56,7 @@ const parseUrl = (url) => {
 
 const initServices = async () => {
   let { host, port, protocol, pathname = "", secure } = opla.config;
+  const { token } = opla.config;
   if (opla.config.url) {
     const url = parseUrl(opla.config.url);
     ({ host, port, pathname, protocol } = url);
@@ -79,10 +80,10 @@ const initServices = async () => {
   const portRegex = /(.*):(\d*)\/?(.*)/;
   const uri = portRegex.test(host) ? host : `${host}:${port}`;
 
-  if (opla.config.token) {
+  if (token) {
     try {
       const response = await fetch(
-        `${protocol}://${uri}${pathname}/bots/params/${opla.config.token}`,
+        `${protocol}://${uri}${pathname}/bots/params/${token}`,
       );
       if (response.error) {
         throw response.error;
@@ -116,8 +117,10 @@ const initServices = async () => {
       path,
       anonymous_secret: anonymousSecret,
       secure,
+      botToken: token,
     };
   }
+
   if (!opla.apiConfig) {
     const path = "api/v1/";
     const url = `${uri}/${path}`;

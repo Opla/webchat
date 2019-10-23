@@ -17,30 +17,8 @@ import fetch from "./services/fetch";
  */
 const app = {};
 
-const localized = {
-  en: {
-    "Your message": "Your message",
-    "Welcome message":
-      "Welcome fellow user! your virtual assistant, will help you.",
-  },
-  fr: {
-    "Your message": "Votre message",
-    "Welcome message":
-      "Bienvenue cher utilisateur, votre assistant virtuel est là pour vous aider. ",
-  },
-};
-
 let baseUrl = "https://bot.opla.ai";
 // let baseUrl = "http://localhost:8085";
-
-// eslint-disable-next-line import/prefer-default-export
-export const getLocalizedText = (text) => {
-  let l = "en";
-  if (opla.config.language) {
-    l = opla.config.language;
-  }
-  return localized[l][text] || text;
-};
 
 const parseUrl = (url) => {
   const a = document.createElement("a");

@@ -39,18 +39,14 @@ class AuthService {
   loadAttributes() {
     const storage = localStorage.getItem(this.storageId);
     if (storage) {
-      try {
-        const data = JSON.parse(storage);
-        if (data && typeof data === "object") {
-          this.accessToken = data.access_token;
-          this.expiresIn = data.expires_in;
-          this.scope = data.scope;
-          this.authorized = data.authorized;
-          this.username = data.username;
-          this.user_id = data.user_id;
-        }
-      } catch (e) {
-        throw e;
+      const data = JSON.parse(storage);
+      if (data && typeof data === "object") {
+        this.accessToken = data.access_token;
+        this.expiresIn = data.expires_in;
+        this.scope = data.scope;
+        this.authorized = data.authorized;
+        this.username = data.username;
+        this.user_id = data.user_id;
       }
     }
   }
@@ -64,11 +60,7 @@ class AuthService {
       username: this.username,
       user_id: this.userId,
     };
-    try {
-      localStorage.setItem(this.storageId, JSON.stringify(storage));
-    } catch (e) {
-      throw e;
-    }
+    localStorage.setItem(this.storageId, JSON.stringify(storage));
   }
 
   resetAccess() {

@@ -17,7 +17,7 @@ import fetch from "./services/fetch";
  */
 const app = {};
 
-let baseUrl = "https://bot.opla.ai";
+let baseUrl = "https://opla.ai/bot";
 // let baseUrl = "http://localhost:8085";
 
 const parseUrl = (url) => {

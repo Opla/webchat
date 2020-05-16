@@ -104,17 +104,17 @@ In addition  of the system fonts, here is the list of some Google web fonts avai
 The prefered value for colors is a **6 Digit Hex Color** (#000000 for black)
 
 **<sup>3</sup>Background-image**<br />
-Specify the path to the picture used in both avatar or watermark: *url("https://bot.opla.ai/images/default-avatar.png"); for example*<br />
+Specify the path to the picture used in both avatar or watermark: *url("https://opla.ai/bot/images/default-avatar.png"); for example*<br />
 You can use **.Jpg**, **.Png** or **.Svg** images.<br />
 Please note that for an avatar the minimum expected size is **42px x 42px** *(if it's a bitmap file)* and it's must be a **square image**.
 
 ### Some helper images:
 
-![Basic webchat](https://bot.opla.ai/images/webchat-theming_view-basic.jpg)
+![Basic webchat](https://opla.ai/bot/images/webchat-theming_view-basic.jpg)
 
 Some variations : 
 
-![Advanced options](https://bot.opla.ai/images/webchat-theming_view-advanced.jpg)
+![Advanced options](https://opla.ai/bot/images/webchat-theming_view-advanced.jpg)
 
 
 ## Contributing

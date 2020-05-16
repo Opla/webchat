@@ -19,7 +19,7 @@
   --messenger-box-header-text-color: #FFFFFF;
   //
   // Messsage from bot
-  --from-bot-avatar: url("https://bot.opla.ai/images/opla-avatar.png");
+  --from-bot-avatar: url("https://opla.ai/bot/images/opla-avatar.png");
   --from-bot-bg-color: #292C45;
   --from-bot-text-color: #FFFFFF;
   --from-bot-button-bg-color: #E23F3F;
@@ -28,7 +28,7 @@
   //
   // Messages from user
   --display-user-avatar: none;
-  --from-user-avatar: url("https://bot.opla.ai/images/default-avatar.png");
+  --from-user-avatar: url("https://opla.ai/bot/images/default-avatar.png");
   --from-user-bg-color: #FFFFFF;
   --from-user-text-color: #292C45;
   //
@@ -40,5 +40,5 @@
   --open-button-background-color: #E23F3F;
   //
   // Watermark
-  --watermark: url("https://bot.opla.ai/images/Opla-AI.svg");
+  --watermark: url("https://opla.ai/bot/images/Opla-AI.svg");
 }
